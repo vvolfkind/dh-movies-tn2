@@ -1,0 +1,13 @@
+@extends('master')
+@section('content')
+<section>
+    <ul>
+        @foreach($generos as $genero)
+        <li>
+            <a href="">{{ $genero->name }}</a>
+        </li>
+        @endforeach
+    </ul>
+</section>
+
+@endsection
