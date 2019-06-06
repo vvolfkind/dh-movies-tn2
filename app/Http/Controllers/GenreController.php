@@ -21,7 +21,9 @@ class GenreController extends Controller
         $genero = Genre::find($id);
 
         if(count($movies) == 0) {
-            return redirect()->back();
+            return redirect()
+                ->back()
+                ->with('error', 'No hay pelis de ' . $genero->name);
         }
 
         return view('genreMovies')
