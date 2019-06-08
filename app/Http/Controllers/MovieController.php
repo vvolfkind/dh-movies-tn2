@@ -61,13 +61,20 @@ class MovieController extends Controller
         $mes = $request->input('mes');
         $anio = $request->input('anio');
 
-        $release_date = $dia . '-' . $mes . '-' . $anio;
+        $date = date_create($dia . '-' . $mes . '-' . $anio);
+        $release_date = date_format($date, "Y-m-d H:i:s");
 
+        $pelicula = new Movie([
+            'title' => $request->input('titulo'),
+            'awards' => $request->input('premios'),
+            'rating' => $request->input('rating'),
+            'length' => $request->input('duracion'),
+            'release_date' => $release_date
+        ]);
 
+        $pelicula->save();
 
-        dd('LLEGUE!');
-
-
+        return redirect()->route('/movies');
 
 
     }
