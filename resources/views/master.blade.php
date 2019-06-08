@@ -23,6 +23,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/genres">Pelis por genero</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/actors">Actores</a>
+                    </li>
                 </ul>
             </div>
         </nav>

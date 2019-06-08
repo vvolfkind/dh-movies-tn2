@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Movie;
-use App\Genre;
-use App\Actor;
-use DB;
 
-class MovieController extends Controller
+class SeriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +13,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        return view('movies')
-            ->with('movies', Movie::all());
-
+        //
     }
 
     /**
@@ -29,7 +23,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        return view('createMovie');
+        //
     }
 
     /**
@@ -40,36 +34,7 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-
-        $reglas = [
-            'titulo' => 'required',
-            'premios' => 'required',
-            'duracion' => 'required',
-            'rating' => 'required',
-            'dia' => 'required',
-            'mes' => 'required',
-            'anio' => 'required'
-        ];
-        
-        $mensaje = [
-            'required' => 'El campo :attribute es obligatorio'
-        ];
-
-        $this->validate($request, $reglas, $mensaje);
-
-        $dia = $request->input('dia');
-        $mes = $request->input('mes');
-        $anio = $request->input('anio');
-
-        $release_date = $dia . '-' . $mes . '-' . $anio;
-
-
-
-        dd('LLEGUE!');
-
-
-
-
+        //
     }
 
     /**
@@ -80,9 +45,7 @@ class MovieController extends Controller
      */
     public function show($id)
     {
-        return view('movie')
-            ->with('movie', Movie::find($id));
-
+        //
     }
 
     /**
@@ -117,16 +80,5 @@ class MovieController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function actorMovie()
-    {
-        $response = array_map(function ($val) {
-            return [
-                Actor::find($val->actor_id)->getNombreCompleto() => Movie::find($val->movie_id)->title,
-            ];
-        }, DB::table('actor_movie')->get()->toArray());
-
-        dd($response);
     }
 }
